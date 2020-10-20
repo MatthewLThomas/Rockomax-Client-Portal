@@ -1,0 +1,5 @@
+test\JavaTest1.class
+com\rcp\Driver.class
+com\rcp\util\ConnectionUtil.class
+com\rcp\config\FileConnectionsUtil.class
+com\rcp\repo\DAOContract.class
