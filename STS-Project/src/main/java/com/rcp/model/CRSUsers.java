@@ -2,56 +2,89 @@ package com.rcp.model;
 
 public class CRSUsers {
 
-	private int usersId;
+	private int id;
 	private String username;
 	private String password;
 	private String userFirstName;
 	private String userLastName;
 	private String userEmail;
-	private int userRoleId;
+	private String userRole;
 	
+	private CRSUsers(CRSUsersBuilder builder) {
+		this.username = builder.username;
+		this.password = builder.password;
+		this.userFirstName = builder.userFirstName;
+		this.userLastName = builder.userLastName;
+		this.userRole = builder.userRole;
+		this.userEmail = builder.userEmail;
+		this.id = builder.id;
+	}
 	
-	public int getUsersId() {
-		return usersId;
-	}
-	public void setUsersId(int usersId) {
-		this.usersId = usersId;
-	}
 	public String getUsername() {
 		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
 	}
 	public String getPassword() {
 		return password;
 	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	public String getUserFirstName() {
 		return userFirstName;
-	}
-	public void setUserFirstName(String userFirstName) {
-		this.userFirstName = userFirstName;
 	}
 	public String getUserLastName() {
 		return userLastName;
 	}
-	public void setUserLastName(String userLastName) {
-		this.userLastName = userLastName;
-	}
 	public String getUserEmail() {
 		return userEmail;
 	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public String getUserRole() {
+		return userRole;
 	}
-	public int getUserRoleId() {
-		return userRoleId;
+	public int getId() {
+		return id;
 	}
-	public void setUserRoleId(int userRoleId) {
-		this.userRoleId = userRoleId;
+	public static class CRSUsersBuilder {
+		private int id;
+		private String username;
+		private String password;
+		private String userFirstName;
+		private String userLastName;
+		private String userEmail;
+		private String userRole;
+		public CRSUsersBuilder(String username) {
+			this.username = username;
+		}
+		public CRSUsersBuilder id(int id) {
+			this.id = id;
+			return this;
+		}
+		public CRSUsersBuilder password(String password) {
+			this.password = password;
+			return this;
+		}
+		public CRSUsersBuilder userFirstName(String userFirstName) {
+			this.userFirstName=userFirstName;
+			return this;
+		}
+		public CRSUsersBuilder userLastName(String userLastName) {
+			this.userLastName = userLastName;
+			return this;
+		}
+		public CRSUsersBuilder userEmail(String userEmail) {
+			this.userEmail = userEmail;
+			return this;
+		}
+		public CRSUsersBuilder userRole(String userRole) {
+			this.userRole = userRole;
+			return this;
+		}
+		public CRSUsers build() {
+			CRSUsers u = new CRSUsers(this);
+			return validateCRSUsers(u);
+		}
+		private CRSUsers validateCRSUsers(CRSUsers u) {
+			//TODO: Do some basic Validations to check if CRSUsers u
+			//			violates any assumptions of the system.
+			return u;
+		}
 	}
 	
 	

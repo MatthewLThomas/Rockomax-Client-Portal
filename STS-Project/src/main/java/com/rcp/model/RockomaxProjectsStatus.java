@@ -1,8 +1,8 @@
 package com.rcp.model;
 
-public class RockomaxProjectStatus {
+public class RockomaxProjectsStatus {
 	private int statusId;
-	private String status;
+	private String Status;
 	public int getStatusId() {
 		return statusId;
 	}
@@ -10,10 +10,10 @@ public class RockomaxProjectStatus {
 		this.statusId = statusId;
 	}
 	public String getStatus() {
-		return status;
+		return Status;
 	}
 	public void setStatus(String status) {
-		this.status = status;
+		Status = status;
 	}
 	
 }

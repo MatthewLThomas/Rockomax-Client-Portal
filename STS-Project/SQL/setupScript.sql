@@ -82,14 +82,16 @@ create view projects_view as
 	select
 		project_id,
 		project_name,
-		crs.crs_username,
-		crs.user_first_name,
-		crs.user_last_name,
-		crs.user_email,
+		crs.crs_users_id as crs_user_id,
+		crs.crs_username as crs_username,
+		crs.user_first_name as user_first_name,
+		crs.user_last_name as user_last_name,
+		crs.user_email as user_email,
 		project_lv_costs,
 		project_pl_costs,
 		project_description,
-		s.project_status,
+		s.project_status_id as project_status_id,
+		s.project_status as project_status,
 		craft_file,
 		payload_image,
 		launcher_image
@@ -101,6 +103,41 @@ create view projects_view as
 		on r.project_status = s.project_status_id;
 select all from projects_view ;
 --drop view projects_view;
+
+create view crs_users_view as
+	select
+		crs_username,
+		crs_password,
+		user_first_name,
+		user_last_name,
+		user_email,
+		r.user_role as user_role
+	from 
+		crs_users as u
+	inner join crs_user_roles as r
+		on u.user_role_id = r.crs_user_role_id;
+
+create view projects_view_public as
+	select
+		project_id,
+		project_name,
+		crs.crs_username,
+		project_lv_costs,
+		project_pl_costs,
+		project_description,
+		s.project_status_id,
+		s.project_status,
+		craft_file,
+		payload_image,
+		launcher_image
+	from 
+		rockomax_projects as r
+	inner join crs_users as crs
+		on r.project_client = crs.crs_users_id
+	inner join rockomax_projects_status as s
+		on r.project_status = s.project_status_id;
+select all from projects_view ;
+--drop view projects_view_public;
 create view reimb_view_pending as
 	select
 		reimb_id,
@@ -109,9 +146,11 @@ create view reimb_view_pending as
 		reimb_submitted,
 		reimb_description,
 		reimb_receipt,
+		u.crs_users_id as client_id,
 		u.crs_username as client,--client
 		u.user_first_name as c_first_name,
 		u.user_last_name as c_last_name,
+		s.reimb_status_id,
 		s.reimb_status,
 		t.reimb_type		
 	from 
@@ -130,19 +169,25 @@ create view reimb_view_pending as
 create view reimb_view_resolved as
 	select
 		reimb_id,
+		p.project_id,
 		p.project_name,
 		reimb_ammount,	
 		reimb_submitted,
 		reimb_resolved 
 		reimb_description,
 		reimb_receipt,
+		u.crs_users_id as client_id,
 		u.crs_username as client,--client
 		u.user_first_name as c_first_name,
 		u.user_last_name as c_last_name,
-		ut.user_first_name as fm_first_name,
+		ut.crs_users_id as fm_id,
+		ut.crs_username as fm_username,
+		ut.user_first_name as fm_first_name, --Finance Manager
 		ut.user_last_name  as fm_last_name,
-		s.reimb_status,
-		t.reimb_type		
+		s.reimb_status_id as reimb_status_id,
+		s.reimb_status as reimb_status,
+		t.reimb_type_id as reimb_type_id,
+		t.reimb_type as reimb_type		
 	from 
 		crs_reimb as r
 	inner join rockomax_projects as ro
@@ -158,6 +203,8 @@ create view reimb_view_resolved as
 	inner join rockomax_projects as p
 		on r.reimb_project = p.project_id;
 
+--drop view reimb_view_resolved ;
+
 
 
 insert into rockomax_projects_status (project_status) values ('In-Development'),('Finished'),('Failed');
@@ -166,3 +213,5 @@ select * from rockomax_projects_status;
 insert into crs_reimb_status (reimb_status) values ('Pending'),('Approved'),('Denied');
 insert into crs_reimb_type (reimb_type) values ('Payload'),('Infrastructure'),('Loss of Life'),('Misc. Damages');
 insert into crs_user_roles (user_role) values ('Finance Manager'),('Client');
+
+

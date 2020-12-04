@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CRSReimb.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">RockomaxClientPortal</a> &gt; <a href="index.source.html" class="el_package">com.rcp.model</a> &gt; <span class="el_source">CRSReimb.java</span></div><h1>CRSReimb.java</h1><pre class="source lang-java linenums">package com.rcp.model;
+
+import java.io.File;
+import java.sql.Timestamp;
+
+public class CRSReimb {
+	
+	private int id;
+	private RockomaxProjects project;
+	private double reimbAmmount;
+	private Timestamp reimbSubmitted;
+	private Timestamp reimbResolved;
+	private String reimbDescription;
+	private File recipt;
+	private CRSUsers client;
+	private CRSUsers resolver;
+	private CRSReimbStatus reimbStatus;
+	private CRSReimbType reimbType;
+
+	
+<span class="fc" id="L21">	private CRSReimb(CRSReimbBuilder builder) {</span>
+<span class="fc" id="L22">		this.id = builder.id;</span>
+<span class="fc" id="L23">		this.reimbAmmount = builder.ammount;</span>
+<span class="fc" id="L24">		this.reimbSubmitted = builder.submitted;</span>
+<span class="fc" id="L25">		this.reimbResolved = builder.resolved;</span>
+<span class="fc" id="L26">		this.reimbDescription = builder.description;</span>
+<span class="fc" id="L27">		this.recipt = builder.recipt;</span>
+<span class="fc" id="L28">		this.client = builder.client;</span>
+<span class="fc" id="L29">		this.resolver = builder.resolver;</span>
+<span class="fc" id="L30">		this.reimbStatus = builder.status;</span>
+<span class="fc" id="L31">		this.reimbType = builder.type;</span>
+<span class="fc" id="L32">		this.project = builder.project;</span>
+<span class="fc" id="L33">	}</span>
+	
+
+	public double getReimbAmmount() {
+<span class="fc" id="L37">		return reimbAmmount;</span>
+	}
+	public Timestamp getReimbSubmitted() {
+<span class="fc" id="L40">		return reimbSubmitted;</span>
+	}
+	public Timestamp getReimbResolved() {
+<span class="fc" id="L43">		return reimbResolved;</span>
+	}
+	public String getReimbDescription() {
+<span class="fc" id="L46">		return reimbDescription;</span>
+	}
+	public File getRecipt() {
+<span class="fc" id="L49">		return recipt;</span>
+	}
+	
+	public CRSUsers getResolver() {
+<span class="nc" id="L53">		return resolver;</span>
+	}
+
+
+	public RockomaxProjects getProject() {
+<span class="fc" id="L58">		return project;</span>
+	}
+
+
+	public CRSUsers getClient() {
+<span class="nc" id="L63">		return client;</span>
+	}
+
+
+	public CRSReimbStatus getReimbStatus() {
+<span class="nc" id="L68">		return reimbStatus;</span>
+	}
+
+
+	public CRSReimbType getReimbType() {
+<span class="nc" id="L73">		return reimbType;</span>
+	}
+
+
+	public int getId() {
+<span class="fc" id="L78">		return id;</span>
+	}
+<span class="fc" id="L80">	public static class CRSReimbBuilder {</span>
+		
+		private int id;
+		private double ammount;
+		private Timestamp submitted;
+		private Timestamp resolved;
+		private String description;
+		private File recipt;
+		private CRSUsers client;
+		private CRSUsers resolver;
+		private RockomaxProjects project;
+		private CRSReimbType type;
+		private CRSReimbStatus status;
+	
+		
+		public CRSReimbBuilder id(int id) {
+<span class="fc" id="L96">			this.id = id;</span>
+<span class="fc" id="L97">			return this;</span>
+		}
+		public CRSReimbBuilder client(CRSUsers client) {
+<span class="fc" id="L100">			this.client = client;</span>
+<span class="fc" id="L101">			return this;</span>
+		}
+		public CRSReimbBuilder resolver(CRSUsers financeManger) {
+<span class="nc" id="L104">			this.resolver = financeManger;</span>
+<span class="nc" id="L105">			return this;</span>
+		}
+		public CRSReimbBuilder project(RockomaxProjects project) {
+<span class="fc" id="L108">			this.project = project;</span>
+<span class="fc" id="L109">			return this;</span>
+		}
+		public CRSReimbBuilder type(CRSReimbType type) {
+<span class="fc" id="L112">			this.type = type;</span>
+<span class="fc" id="L113">			return this;</span>
+		}
+		public CRSReimbBuilder status(CRSReimbStatus status) {
+<span class="fc" id="L116">			this.status = status;</span>
+<span class="fc" id="L117">			return this;</span>
+		}
+		public CRSReimbBuilder ammount(double ammount) {
+<span class="fc" id="L120">			this.ammount = ammount;</span>
+<span class="fc" id="L121">			return this;</span>
+		}
+		public CRSReimbBuilder submitted(Timestamp submitted) {
+<span class="fc" id="L124">			this.submitted = submitted;</span>
+<span class="fc" id="L125">			return this;</span>
+		}
+		public CRSReimbBuilder resolved(Timestamp resolved) {
+<span class="nc" id="L128">			this.resolved = resolved;</span>
+<span class="nc" id="L129">			return this;</span>
+		}
+		public CRSReimbBuilder description(String description) {
+<span class="fc" id="L132">			this.description = description;</span>
+<span class="fc" id="L133">			return this;</span>
+		}
+		public CRSReimbBuilder recipt(File recipt) {
+<span class="nc" id="L136">			this.recipt = recipt;</span>
+<span class="nc" id="L137">			return this;</span>
+		}
+		public CRSReimb build() {
+<span class="fc" id="L140">			CRSReimb reimb = new CRSReimb(this);</span>
+<span class="fc" id="L141">			return validateReimbObject(reimb);</span>
+		}
+		public CRSReimb validateReimbObject(CRSReimb reimb) {
+			//TODO  Do some basic Validations to check if reimb object does not
+			//		violate any assumptions of the system
+<span class="fc" id="L146">			return reimb;</span>
+		}
+	}
+	
+
+
+	
+
+}	
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

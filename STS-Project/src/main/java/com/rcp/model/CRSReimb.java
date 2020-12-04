@@ -4,35 +4,35 @@ import java.io.File;
 import java.sql.Timestamp;
 
 public class CRSReimb {
-	private int reimbId;
+	
+	private int id;
+	private RockomaxProjects project;
 	private double reimbAmmount;
 	private Timestamp reimbSubmitted;
 	private Timestamp reimbResolved;
 	private String reimbDescription;
 	private File recipt;
-	private CRSUsers author;
+	private CRSUsers client;
 	private CRSUsers resolver;
 	private CRSReimbStatus reimbStatus;
 	private CRSReimbType reimbType;
-	private RockomaxProjects project;
+
 	
 	private CRSReimb(CRSReimbBuilder builder) {
-		this.reimbId = builder.id;
+		this.id = builder.id;
 		this.reimbAmmount = builder.ammount;
 		this.reimbSubmitted = builder.submitted;
 		this.reimbResolved = builder.resolved;
 		this.reimbDescription = builder.description;
 		this.recipt = builder.recipt;
-		this.author = builder.author;
+		this.client = builder.client;
 		this.resolver = builder.resolver;
 		this.reimbStatus = builder.status;
 		this.reimbType = builder.type;
 		this.project = builder.project;
 	}
 	
-	public int getReimbId() {
-		return reimbId;
-	}
+
 	public double getReimbAmmount() {
 		return reimbAmmount;
 	}
@@ -48,36 +48,73 @@ public class CRSReimb {
 	public File getRecipt() {
 		return recipt;
 	}
-	public CRSUsers getAuthor() {
-		return author;
-	}
+	
 	public CRSUsers getResolver() {
 		return resolver;
 	}
-	public CRSReimbStatus getReimbStatus() {
-		return reimbStatus;
-	}
-	public CRSReimbType getReimbType() {
-		return reimbType;
-	}
+
+
 	public RockomaxProjects getProject() {
 		return project;
 	}
-	public class CRSReimbBuilder {
-		public final int id;
-		public double ammount;
-		public Timestamp submitted;
-		public Timestamp resolved;
-		public String description;
-		public File recipt;
-		public CRSUsers author;
-		public CRSUsers resolver;
-		public CRSReimbType type;
-		public RockomaxProjects project;
-		public CRSReimbStatus status;
 
-		public CRSReimbBuilder(int id) {
-			this.id= id;
+
+	public CRSUsers getClient() {
+		return client;
+	}
+
+
+	public CRSReimbStatus getReimbStatus() {
+		return reimbStatus;
+	}
+
+
+	public CRSReimbType getReimbType() {
+		return reimbType;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+	public static class CRSReimbBuilder {
+		
+		private int id;
+		private double ammount;
+		private Timestamp submitted;
+		private Timestamp resolved;
+		private String description;
+		private File recipt;
+		private CRSUsers client;
+		private CRSUsers resolver;
+		private RockomaxProjects project;
+		private CRSReimbType type;
+		private CRSReimbStatus status;
+	
+		
+		public CRSReimbBuilder id(int id) {
+			this.id = id;
+			return this;
+		}
+		public CRSReimbBuilder client(CRSUsers client) {
+			this.client = client;
+			return this;
+		}
+		public CRSReimbBuilder resolver(CRSUsers financeManger) {
+			this.resolver = financeManger;
+			return this;
+		}
+		public CRSReimbBuilder project(RockomaxProjects project) {
+			this.project = project;
+			return this;
+		}
+		public CRSReimbBuilder type(CRSReimbType type) {
+			this.type = type;
+			return this;
+		}
+		public CRSReimbBuilder status(CRSReimbStatus status) {
+			this.status = status;
+			return this;
 		}
 		public CRSReimbBuilder ammount(double ammount) {
 			this.ammount = ammount;
@@ -99,26 +136,6 @@ public class CRSReimb {
 			this.recipt = recipt;
 			return this;
 		}
-		public CRSReimbBuilder author(CRSUsers author) {
-			this.author = author;
-			return this;
-		}
-		public CRSReimbBuilder resolver(CRSUsers resolver) {
-			this.resolver = resolver;
-			return this;
-		}
-		public CRSReimbBuilder status(CRSReimbStatus status) {
-			this.status = status;
-			return this;
-		}
-		public CRSReimbBuilder type(CRSReimbType type) {
-			this.type = type;
-			return this;
-		}
-		public CRSReimbBuilder project(RockomaxProjects project) {
-			this.project = project;
-			return this;
-		}
 		public CRSReimb build() {
 			CRSReimb reimb = new CRSReimb(this);
 			return validateReimbObject(reimb);
@@ -129,5 +146,9 @@ public class CRSReimb {
 			return reimb;
 		}
 	}
+	
+
+
+	
 
 }	

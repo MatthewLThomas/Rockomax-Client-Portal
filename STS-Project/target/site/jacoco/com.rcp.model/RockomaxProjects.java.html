@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RockomaxProjects.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">RockomaxClientPortal</a> &gt; <a href="index.source.html" class="el_package">com.rcp.model</a> &gt; <span class="el_source">RockomaxProjects.java</span></div><h1>RockomaxProjects.java</h1><pre class="source lang-java linenums">package com.rcp.model;
+
+import java.io.File;
+
+public class RockomaxProjects {
+		private int projectId;
+		private String projectName;
+		private double projectLauncVehicleCost;
+		private double projectPayloadCost;
+		private String projectDescription;
+		private CRSUsers client;
+		private RockomaxProjectsStatus project_status;
+		private File craftFile;//for Payload
+		private File payloadImage;
+		private File LauncherImage;
+		
+<span class="fc" id="L17">		private RockomaxProjects(RockomaxProjectsBuilder builder) {</span>
+<span class="fc" id="L18">			this.projectId = builder.id;</span>
+<span class="fc" id="L19">			this.projectName = builder.name;</span>
+<span class="fc" id="L20">			this.projectLauncVehicleCost = builder.launchVehicleCost;</span>
+<span class="fc" id="L21">			this.projectPayloadCost = builder.payloadCost;</span>
+<span class="fc" id="L22">			this.projectDescription = builder.description;</span>
+<span class="fc" id="L23">			this.client = builder.client;</span>
+<span class="fc" id="L24">			this.project_status = builder.status;</span>
+<span class="fc" id="L25">			this.craftFile = builder.craftFile;</span>
+<span class="fc" id="L26">			this.payloadImage = builder.payloadImage;</span>
+<span class="fc" id="L27">			this.LauncherImage = builder.launcherImage;</span>
+<span class="fc" id="L28">		}</span>
+		
+		public int getProjectId() {
+<span class="fc" id="L31">			return projectId;</span>
+		}
+		public void setProjectId(int projectId) {
+<span class="nc" id="L34">			this.projectId = projectId;</span>
+<span class="nc" id="L35">		}</span>
+		public String getProjectName() {
+<span class="fc" id="L37">			return projectName;</span>
+		}
+		public void setProjectName(String projectName) {
+<span class="nc" id="L40">			this.projectName = projectName;</span>
+<span class="nc" id="L41">		}</span>
+		public double getProjectLauncVehicleCost() {
+<span class="fc" id="L43">			return projectLauncVehicleCost;</span>
+		}
+		public void setProjectLauncVehicleCost(double projectLauncVehicleCost) {
+<span class="nc" id="L46">			this.projectLauncVehicleCost = projectLauncVehicleCost;</span>
+<span class="nc" id="L47">		}</span>
+		public double getProjectPayloadCost() {
+<span class="fc" id="L49">			return projectPayloadCost;</span>
+		}
+		public void setProjectPayloadCost(double projectPayloadCost) {
+<span class="nc" id="L52">			this.projectPayloadCost = projectPayloadCost;</span>
+<span class="nc" id="L53">		}</span>
+		public String getProjectDescription() {
+<span class="fc" id="L55">			return projectDescription;</span>
+		}
+		public void setProjectDescription(String projectDiscription) {
+<span class="nc" id="L58">			this.projectDescription = projectDiscription;</span>
+<span class="nc" id="L59">		}</span>
+		public CRSUsers getClient() {
+<span class="fc" id="L61">			return client;</span>
+		}
+		public void setClient(CRSUsers client) {
+<span class="nc" id="L64">			this.client = client;</span>
+<span class="nc" id="L65">		}</span>
+		public  RockomaxProjectsStatus getProject_status() {
+<span class="fc" id="L67">			return project_status;</span>
+		}
+		public void setProject_status(RockomaxProjectsStatus project_status) {
+<span class="nc" id="L70">			this.project_status = project_status;</span>
+<span class="nc" id="L71">		}</span>
+		public File getCraftFile() {
+<span class="fc" id="L73">			return craftFile;</span>
+		}
+		public void setCraftFile(File craftFile) {
+<span class="nc" id="L76">			this.craftFile = craftFile;</span>
+<span class="nc" id="L77">		}</span>
+		public File getPayloadImage() {
+<span class="nc" id="L79">			return payloadImage;</span>
+		}
+		public void setPayloadImage(File payloadImage) {
+<span class="nc" id="L82">			this.payloadImage = payloadImage;</span>
+<span class="nc" id="L83">		}</span>
+		public File getLauncherImage() {
+<span class="nc" id="L85">			return LauncherImage;</span>
+		}
+		public void setLauncherImage(File launcherImage) {
+<span class="nc" id="L88">			LauncherImage = launcherImage;</span>
+<span class="nc" id="L89">		}</span>
+		
+<span class="fc" id="L91">		public static class RockomaxProjectsBuilder {</span>
+			private RockomaxProjectsStatus status;
+			private String description;
+			private double launchVehicleCost;
+			private String name;
+			private double payloadCost;
+			private CRSUsers client;
+			private File craftFile;//for Payload
+			private File payloadImage;
+			private File launcherImage;
+			private int id;
+			
+			public RockomaxProjectsBuilder id (int id) {
+<span class="nc" id="L104">				this.id = id;</span>
+<span class="nc" id="L105">				return this;</span>
+			}
+			
+			public RockomaxProjectsBuilder status (RockomaxProjectsStatus status) {
+<span class="fc" id="L109">				this.status = status;</span>
+<span class="fc" id="L110">				return this;</span>
+			}
+			public RockomaxProjectsBuilder description (String description) {
+<span class="fc" id="L113">				this.description = description;</span>
+<span class="fc" id="L114">				return this;</span>
+			}
+			public RockomaxProjectsBuilder launchVehicleCost(double launchVehicleCost) {
+<span class="fc" id="L117">				this.launchVehicleCost = launchVehicleCost;</span>
+<span class="fc" id="L118">				return this;</span>
+			}
+			public RockomaxProjectsBuilder name (String name) {
+<span class="fc" id="L121">				this.name = name;</span>
+<span class="fc" id="L122">				return this;</span>
+			}
+			public RockomaxProjectsBuilder payloadCost(double payloadCost) {
+<span class="fc" id="L125">				this.payloadCost = payloadCost;</span>
+<span class="fc" id="L126">				return this;</span>
+			}
+			public RockomaxProjectsBuilder client(CRSUsers client) {
+<span class="fc" id="L129">				this.client = client;</span>
+<span class="fc" id="L130">				return this;</span>
+			}
+			public RockomaxProjectsBuilder craftFile(File craftFile) {
+<span class="nc" id="L133">				this.craftFile = craftFile;</span>
+<span class="nc" id="L134">				return this;</span>
+			}
+			public RockomaxProjectsBuilder payloadImage(File payloadImage) {
+<span class="nc" id="L137">				this.payloadImage = payloadImage;</span>
+<span class="nc" id="L138">				return this;</span>
+			}
+			public RockomaxProjectsBuilder launcherImage(File launcherImage) {
+<span class="nc" id="L141">				this.launcherImage = launcherImage;</span>
+<span class="nc" id="L142">				return this;</span>
+			}
+			public RockomaxProjects build() {
+<span class="fc" id="L145">				RockomaxProjects r = new RockomaxProjects(this);</span>
+<span class="fc" id="L146">				return validateRockomaxProjects(r);</span>
+			}
+			private RockomaxProjects validateRockomaxProjects(RockomaxProjects r) {
+				// TODO Do some basic Validations to check if RockomaxProjects object does not
+				//		violate any assumptions of the system
+<span class="fc" id="L151">				return r;</span>
+			}
+		}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

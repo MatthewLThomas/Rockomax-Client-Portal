@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FileOpp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">RockomaxClientPortal</a> &gt; <a href="index.source.html" class="el_package">com.rcp.util</a> &gt; <span class="el_source">FileOpp.java</span></div><h1>FileOpp.java</h1><pre class="source lang-java linenums">package com.rcp.util;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+<span class="nc" id="L10">public class FileOpp {</span>
+	public static byte[] fileToByte(File file) {
+<span class="nc" id="L12">		try (FileInputStream fis = new FileInputStream(file)){</span>
+<span class="nc" id="L13">			ByteArrayOutputStream bos = new ByteArrayOutputStream();</span>
+<span class="nc" id="L14">			byte[] buf = new byte[1024];</span>
+<span class="nc bnc" id="L15" title="All 2 branches missed.">			for(int readNum; (readNum = fis.read(buf)) != -1;) {</span>
+<span class="nc" id="L16">				bos.write(buf,0,readNum);</span>
+			}
+	
+<span class="nc" id="L19">			return bos.toByteArray();</span>
+<span class="nc bnc" id="L20" title="All 8 branches missed.">		} catch (IOException e) {</span>
+<span class="nc" id="L21">			e.printStackTrace();</span>
+			
+<span class="nc" id="L23">			return new byte[1];</span>
+		}
+		
+		
+		
+		
+	}
+	public static File byteToFile(byte[] bytes, String name) {
+<span class="nc" id="L31">		try(FileOutputStream fos = new FileOutputStream(&quot;files/&quot;+name)){</span>
+<span class="nc" id="L32">			fos.write(bytes);</span>
+<span class="nc" id="L33">			return new File(&quot;files/&quot;+name);</span>
+<span class="nc bnc" id="L34" title="All 8 branches missed.">		} catch (FileNotFoundException e) {</span>
+			
+<span class="nc" id="L36">			e.printStackTrace();</span>
+<span class="nc" id="L37">			return new File(&quot;files/error.file&quot;);</span>
+<span class="nc" id="L38">		} catch (IOException e) {</span>
+		
+<span class="nc" id="L40">			e.printStackTrace();</span>
+<span class="nc" id="L41">			return new File(&quot;files/error.file&quot;);</span>
+		}
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

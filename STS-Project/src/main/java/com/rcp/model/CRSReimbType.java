@@ -1,23 +1,18 @@
 package com.rcp.model;
 
 public class CRSReimbType {
-	
-	private int reimbTypeId;
-	private String reimbType;
-	
-	
-	public int getReimbTypeId() {
-		return reimbTypeId;
+	private int id;
+	private String type;
+	public int getId() {
+		return id;
 	}
-	public void setReimbTypeId(int reimbTypeId) {
-		this.reimbTypeId = reimbTypeId;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getReimbType() {
-		return reimbType;
+	public String getType() {
+		return type;
 	}
-	public void setReimbType(String reimbType) {
-		this.reimbType = reimbType;
+	public void setType(String type) {
+		this.type = type;
 	}
-	
-	
 }

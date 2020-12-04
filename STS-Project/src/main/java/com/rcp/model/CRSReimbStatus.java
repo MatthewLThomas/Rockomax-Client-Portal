@@ -1,21 +1,19 @@
 package com.rcp.model;
 
 public class CRSReimbStatus {
-
-	private int reimbStatusId;
-	private String reimbStatus;
+	private int id;
+	private String status;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	
-	
-	public String getReimbStatus() {
-		return reimbStatus;
-	}
-	public void setReimbStatus(String reimbStatus) {
-		this.reimbStatus = reimbStatus;
-	}
-	public int getReimbStatusId() {
-		return reimbStatusId;
-	}
-	public void setReimbStatusId(int reimbStatusId) {
-		this.reimbStatusId = reimbStatusId;
-	}
 }

@@ -1,1 +1,6 @@
 JamesTest.class
+com\rcp\repo\Delete.class
+com\rcp\repo\Update.class
+com\rcp\repo\Read.class
+com\rcp\repo\Insert.class
+com\rcp\repo\DAOSuiteTest.class

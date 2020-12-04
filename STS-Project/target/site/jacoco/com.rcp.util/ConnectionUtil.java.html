@@ -13,39 +13,39 @@ import com.rcp.config.FileConnectionsUtil;
 
 		//jdbc:postgresql://endpoint:port/dbName?currentSchema=schema
 
-<span class="nc" id="L16">		static FileConnectionsUtil fc = FileConnectionsUtil.getInstance();</span>
+<span class="fc" id="L16">		static FileConnectionsUtil fc = FileConnectionsUtil.getInstance();</span>
 		private static Connection connection;
 		
 		public static synchronized Connection getConnection(){
-<span class="nc bnc" id="L20" title="All 2 branches missed.">			if (connection == null) {</span>
+<span class="fc bfc" id="L20" title="All 2 branches covered.">			if (connection == null) {</span>
 				try {
-<span class="nc" id="L22">					Class.forName(&quot;org.postgresql.Driver&quot;);</span>
+<span class="fc" id="L22">					Class.forName(&quot;org.postgresql.Driver&quot;);</span>
 <span class="nc" id="L23">				}catch(ClassNotFoundException e){</span>
 <span class="nc" id="L24">					System.out.println(&quot;Could not register driver&quot;);</span>
 <span class="nc" id="L25">					e.printStackTrace();</span>
-<span class="nc" id="L26">				}</span>
+<span class="fc" id="L26">				}</span>
 				try {
-<span class="nc" id="L28">					connection = fc.getConnection();</span>
+<span class="fc" id="L28">					connection = fc.getConnection();</span>
 <span class="nc" id="L29">				} catch (SQLException e) {</span>
 					
 <span class="nc" id="L31">					e.printStackTrace();</span>
-<span class="nc" id="L32">				}</span>
+<span class="fc" id="L32">				}</span>
 			}
 			try {
-<span class="nc bnc" id="L35" title="All 2 branches missed.">				if (connection.isClosed()) {</span>
-<span class="nc" id="L36">					System.out.println(&quot;Opening new connection...&quot;);</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">				if (connection.isClosed()) {</span>
+<span class="fc" id="L36">					System.out.println(&quot;Opening new connection...&quot;);</span>
 					try {
-<span class="nc" id="L38">						connection = fc.getConnection();</span>
+<span class="fc" id="L38">						connection = fc.getConnection();</span>
 <span class="nc" id="L39">					} catch (SQLException e) {</span>
 						// TODO Auto-generated catch block
 <span class="nc" id="L41">						e.printStackTrace();</span>
-<span class="nc" id="L42">					}</span>
+<span class="fc" id="L42">					}</span>
 				}
 <span class="nc" id="L44">			} catch (SQLException e) {</span>
 				// TODO Auto-generated catch block
 <span class="nc" id="L46">				e.printStackTrace();</span>
-<span class="nc" id="L47">			}</span>
-<span class="nc" id="L48">			return connection;</span>
+<span class="fc" id="L47">			}</span>
+<span class="fc" id="L48">			return connection;</span>
 			
 		}
 	

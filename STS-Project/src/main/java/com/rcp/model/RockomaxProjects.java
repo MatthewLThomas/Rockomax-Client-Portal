@@ -9,13 +9,13 @@ public class RockomaxProjects {
 		private double projectPayloadCost;
 		private String projectDescription;
 		private CRSUsers client;
-		private RockomaxProjectStatus project_status;
+		private RockomaxProjectsStatus project_status;
 		private File craftFile;//for Payload
 		private File payloadImage;
 		private File LauncherImage;
 		
 		private RockomaxProjects(RockomaxProjectsBuilder builder) {
-			this.projectId = builder.Id;
+			this.projectId = builder.id;
 			this.projectName = builder.name;
 			this.projectLauncVehicleCost = builder.launchVehicleCost;
 			this.projectPayloadCost = builder.payloadCost;
@@ -63,10 +63,10 @@ public class RockomaxProjects {
 		public void setClient(CRSUsers client) {
 			this.client = client;
 		}
-		public RockomaxProjectStatus getProject_status() {
+		public  RockomaxProjectsStatus getProject_status() {
 			return project_status;
 		}
-		public void setProject_status(RockomaxProjectStatus project_status) {
+		public void setProject_status(RockomaxProjectsStatus project_status) {
 			this.project_status = project_status;
 		}
 		public File getCraftFile() {
@@ -88,22 +88,24 @@ public class RockomaxProjects {
 			LauncherImage = launcherImage;
 		}
 		
-		public class RockomaxProjectsBuilder {
-			public RockomaxProjectStatus status;
-			public String description;
-			public double launchVehicleCost;
-			public int Id = 0;
-			public String name;
-			public double payloadCost;
-			public CRSUsers client;
-			public File craftFile;//for Payload
-			public File payloadImage;
-			public File launcherImage;
+		public static class RockomaxProjectsBuilder {
+			private RockomaxProjectsStatus status;
+			private String description;
+			private double launchVehicleCost;
+			private String name;
+			private double payloadCost;
+			private CRSUsers client;
+			private File craftFile;//for Payload
+			private File payloadImage;
+			private File launcherImage;
+			private int id;
 			
-			public RockomaxProjectsBuilder(int Id) {
-				this.Id = Id;
+			public RockomaxProjectsBuilder id (int id) {
+				this.id = id;
+				return this;
 			}
-			public RockomaxProjectsBuilder status (RockomaxProjectStatus status) {
+			
+			public RockomaxProjectsBuilder status (RockomaxProjectsStatus status) {
 				this.status = status;
 				return this;
 			}
@@ -133,6 +135,10 @@ public class RockomaxProjects {
 			}
 			public RockomaxProjectsBuilder payloadImage(File payloadImage) {
 				this.payloadImage = payloadImage;
+				return this;
+			}
+			public RockomaxProjectsBuilder launcherImage(File launcherImage) {
+				this.launcherImage = launcherImage;
 				return this;
 			}
 			public RockomaxProjects build() {

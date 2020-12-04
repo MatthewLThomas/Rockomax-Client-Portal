@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CRSUsers.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">RockomaxClientPortal</a> &gt; <a href="index.source.html" class="el_package">com.rcp.model</a> &gt; <span class="el_source">CRSUsers.java</span></div><h1>CRSUsers.java</h1><pre class="source lang-java linenums">package com.rcp.model;
+
+public class CRSUsers {
+
+	private int id;
+	private String username;
+	private String password;
+	private String userFirstName;
+	private String userLastName;
+	private String userEmail;
+	private String userRole;
+	
+<span class="fc" id="L13">	private CRSUsers(CRSUsersBuilder builder) {</span>
+<span class="fc" id="L14">		this.username = builder.username;</span>
+<span class="fc" id="L15">		this.password = builder.password;</span>
+<span class="fc" id="L16">		this.userFirstName = builder.userFirstName;</span>
+<span class="fc" id="L17">		this.userLastName = builder.userLastName;</span>
+<span class="fc" id="L18">		this.userRole = builder.userRole;</span>
+<span class="fc" id="L19">		this.userEmail = builder.userEmail;</span>
+<span class="fc" id="L20">		this.id = builder.id;</span>
+<span class="fc" id="L21">	}</span>
+	
+	public String getUsername() {
+<span class="fc" id="L24">		return username;</span>
+	}
+	public String getPassword() {
+<span class="fc" id="L27">		return password;</span>
+	}
+	public String getUserFirstName() {
+<span class="fc" id="L30">		return userFirstName;</span>
+	}
+	public String getUserLastName() {
+<span class="fc" id="L33">		return userLastName;</span>
+	}
+	public String getUserEmail() {
+<span class="fc" id="L36">		return userEmail;</span>
+	}
+	public String getUserRole() {
+<span class="nc" id="L39">		return userRole;</span>
+	}
+	public int getId() {
+<span class="fc" id="L42">		return id;</span>
+	}
+	public static class CRSUsersBuilder {
+		private int id;
+		private String username;
+		private String password;
+		private String userFirstName;
+		private String userLastName;
+		private String userEmail;
+		private String userRole;
+<span class="fc" id="L52">		public CRSUsersBuilder(String username) {</span>
+<span class="fc" id="L53">			this.username = username;</span>
+<span class="fc" id="L54">		}</span>
+		public CRSUsersBuilder id(int id) {
+<span class="nc" id="L56">			this.id = id;</span>
+<span class="nc" id="L57">			return this;</span>
+		}
+		public CRSUsersBuilder password(String password) {
+<span class="fc" id="L60">			this.password = password;</span>
+<span class="fc" id="L61">			return this;</span>
+		}
+		public CRSUsersBuilder userFirstName(String userFirstName) {
+<span class="fc" id="L64">			this.userFirstName=userFirstName;</span>
+<span class="fc" id="L65">			return this;</span>
+		}
+		public CRSUsersBuilder userLastName(String userLastName) {
+<span class="fc" id="L68">			this.userLastName = userLastName;</span>
+<span class="fc" id="L69">			return this;</span>
+		}
+		public CRSUsersBuilder userEmail(String userEmail) {
+<span class="fc" id="L72">			this.userEmail = userEmail;</span>
+<span class="fc" id="L73">			return this;</span>
+		}
+		public CRSUsersBuilder userRole(String userRole) {
+<span class="fc" id="L76">			this.userRole = userRole;</span>
+<span class="fc" id="L77">			return this;</span>
+		}
+		public CRSUsers build() {
+<span class="fc" id="L80">			CRSUsers u = new CRSUsers(this);</span>
+<span class="fc" id="L81">			return validateCRSUsers(u);</span>
+		}
+		private CRSUsers validateCRSUsers(CRSUsers u) {
+			//TODO: Do some basic Validations to check if CRSUsers u
+			//			violates any assumptions of the system.
+<span class="fc" id="L86">			return u;</span>
+		}
+	}
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CRSUsersDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">RockomaxClientPortal</a> &gt; <a href="index.source.html" class="el_package">com.rcp.repo</a> &gt; <span class="el_source">CRSUsersDAO.java</span></div><h1>CRSUsersDAO.java</h1><pre class="source lang-java linenums">package com.rcp.repo;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+import com.rcp.model.CRSUsers;
+import com.rcp.util.ConnectionUtil;
+
+<span class="fc" id="L14">public class CRSUsersDAO implements DAOContract&lt;CRSUsers, String&gt; {</span>
+
+	@Override
+	public int create(CRSUsers t) {
+<span class="fc" id="L18">		Connection con = ConnectionUtil.getConnection();</span>
+<span class="fc" id="L19">		String sql = &quot;insert into crs_users (crs_username, crs_password, user_first_name, user_last_name, user_email, user_role_id) values (?,?,?,?,?,2);&quot;;</span>
+<span class="fc" id="L20">		try (PreparedStatement stmt = con.prepareStatement(sql)) {</span>
+<span class="fc" id="L21">			stmt.setString(1, t.getUsername());</span>
+<span class="fc" id="L22">			stmt.setString(2,t.getPassword());</span>
+<span class="fc" id="L23">			stmt.setString(3, t.getUserFirstName());</span>
+<span class="fc" id="L24">			stmt.setString(4, t.getUserLastName());</span>
+<span class="fc" id="L25">			stmt.setString(5, t.getUserEmail());</span>
+<span class="fc" id="L26">			return stmt.executeUpdate();</span>
+<span class="pc bpc" id="L27" title="4 of 8 branches missed.">		}catch(SQLException e) {</span>
+<span class="fc" id="L28">			e.printStackTrace();</span>
+		}
+<span class="fc" id="L30">		return 0;</span>
+	}
+
+	@Override
+	public List&lt;CRSUsers&gt; findAll() {
+<span class="fc" id="L35">		Connection con = ConnectionUtil.getConnection();</span>
+<span class="fc" id="L36">		List&lt;CRSUsers&gt; userList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L37">		String sql = &quot;select * from crs_users_view;&quot;; </span>
+		try {
+<span class="fc" id="L39">			PreparedStatement stmt = con.prepareStatement(sql);</span>
+<span class="fc" id="L40">			ResultSet rs = stmt.executeQuery();</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">			while(rs.next()) {</span>
+<span class="fc" id="L42">				CRSUsers tempUser = new CRSUsers.CRSUsersBuilder(rs.getString(&quot;crs_username&quot;))</span>
+<span class="fc" id="L43">						.password(rs.getString(&quot;crs_password&quot;))</span>
+<span class="fc" id="L44">						.userFirstName(rs.getString(&quot;user_first_name&quot;))</span>
+<span class="fc" id="L45">						.userLastName(rs.getString(&quot;user_last_name&quot;))</span>
+<span class="fc" id="L46">						.userEmail(rs.getString(&quot;user_email&quot;))</span>
+<span class="fc" id="L47">						.userRole(rs.getString(&quot;user_role&quot;))</span>
+<span class="fc" id="L48">						.build();</span>
+<span class="fc" id="L49">				userList.add(tempUser);</span>
+<span class="fc" id="L50">			}</span>
+			
+<span class="nc" id="L52">		} catch (SQLException e) {</span>
+		
+<span class="nc" id="L54">			e.printStackTrace();</span>
+<span class="fc" id="L55">		}</span>
+<span class="fc" id="L56">		return userList;</span>
+	}
+
+	@Override
+	public List&lt;CRSUsers&gt; findBy(String i) {
+<span class="fc" id="L61">		Connection con = ConnectionUtil.getConnection();</span>
+<span class="fc" id="L62">		List&lt;CRSUsers&gt; userList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L63">		String sql = &quot;select * from crs_users_view where crs_username = ?;&quot;; </span>
+		try {
+<span class="fc" id="L65">			PreparedStatement stmt = con.prepareStatement(sql);</span>
+<span class="fc" id="L66">			stmt.setString(1, i);</span>
+<span class="fc" id="L67">			ResultSet rs = stmt.executeQuery();</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">			while(rs.next()) {</span>
+<span class="fc" id="L69">				CRSUsers tempUser = new CRSUsers.CRSUsersBuilder(rs.getString(&quot;crs_username&quot;))</span>
+<span class="fc" id="L70">						.password(rs.getString(&quot;crs_password&quot;))</span>
+<span class="fc" id="L71">						.userFirstName(rs.getString(&quot;user_first_name&quot;))</span>
+<span class="fc" id="L72">						.userLastName(rs.getString(&quot;user_last_name&quot;))</span>
+<span class="fc" id="L73">						.userEmail(rs.getString(&quot;user_email&quot;))</span>
+<span class="fc" id="L74">						.userRole(rs.getString(&quot;user_role&quot;))</span>
+<span class="fc" id="L75">						.build();</span>
+<span class="fc" id="L76">				userList.add(tempUser);</span>
+<span class="fc" id="L77">			}</span>
+			
+<span class="nc" id="L79">		} catch (SQLException e) {</span>
+		
+<span class="nc" id="L81">			e.printStackTrace();</span>
+<span class="fc" id="L82">		}</span>
+		
+<span class="fc" id="L84">		return userList;</span>
+	}
+
+	@Override
+	public int update(CRSUsers t) {
+<span class="fc" id="L89">		Connection con = ConnectionUtil.getConnection();</span>
+<span class="fc" id="L90">		int result = 0;</span>
+<span class="fc" id="L91">		String sql = &quot;update crs_users set user_role_id = ? where crs_username =?&quot;;</span>
+		try {
+<span class="fc" id="L93">			PreparedStatement stmt = con.prepareStatement(sql);</span>
+<span class="pc bpc" id="L94" title="7 of 10 branches missed.">			switch (t.getUserRole()) {</span>
+			case &quot;Finance Manager&quot;:
+<span class="fc" id="L96">				stmt.setInt(1, 1);</span>
+<span class="fc" id="L97">				break;</span>
+			case &quot;Client&quot;:
+<span class="nc" id="L99">				stmt.setInt(1, 2);</span>
+				break;
+			}
+<span class="fc" id="L102">			stmt.setString(2, t.getUsername());</span>
+<span class="fc" id="L103">			result = stmt.executeUpdate();				</span>
+			
+<span class="nc" id="L105">		} catch (SQLException e) {</span>
+<span class="nc" id="L106">			e.printStackTrace();</span>
+<span class="fc" id="L107">		}</span>
+<span class="fc" id="L108">		return result;</span>
+	}
+
+
+	@Override
+	public int delete(CRSUsers t) {
+<span class="fc" id="L114">		Connection con = ConnectionUtil.getConnection();</span>
+<span class="fc" id="L115">		int result = 0;</span>
+<span class="fc" id="L116">		String sql = &quot;delete from crs_users where crs_username =?&quot;;</span>
+		try {
+<span class="fc" id="L118">			PreparedStatement stmt = con.prepareStatement(sql);</span>
+<span class="fc" id="L119">			stmt.setString(1, t.getUsername());</span>
+<span class="fc" id="L120">			result = stmt.executeUpdate();				</span>
+			
+<span class="nc" id="L122">		} catch (SQLException e) {</span>
+<span class="nc" id="L123">			e.printStackTrace();</span>
+<span class="fc" id="L124">		}</span>
+<span class="fc" id="L125">		return result;</span>
+	}
+
+	@Override
+	public int deleteBy(String i) {
+<span class="fc" id="L130">		Connection con = ConnectionUtil.getConnection();</span>
+<span class="fc" id="L131">		int result = 0;</span>
+<span class="fc" id="L132">		String sql = &quot;delete from crs_users where crs_username =?&quot;;</span>
+		try {
+<span class="fc" id="L134">			PreparedStatement stmt = con.prepareStatement(sql);</span>
+<span class="fc" id="L135">			stmt.setString(1, i);</span>
+<span class="fc" id="L136">			result = stmt.executeUpdate();				</span>
+			
+<span class="nc" id="L138">		} catch (SQLException e) {</span>
+<span class="nc" id="L139">			e.printStackTrace();</span>
+<span class="fc" id="L140">		}</span>
+<span class="fc" id="L141">		return result;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
